@@ -1,0 +1,6 @@
+# Copyright (c) 2026 Sebastian Peñafiel (@p-sebastian)
+# SPDX-License-Identifier: MIT
+
+node_modules/
+.expo/
+ios/

@@ -1,0 +1,7 @@
+{
+  "platforms": ["apple"],
+  "apple": {
+    "podspecPath": "ReactNativeSFSymbol.podspec",
+    "modules": ["ReactNativeSFSymbolModule"]
+  }
+}
