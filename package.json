@@ -1,5 +1,5 @@
 {
-  "name": "react-native-sf-symbol",
+  "name": "@p-sebastian/react-native-sf-symbol",
   "version": "0.1.0",
   "packageManager": "bun@1.3.14",
   "description": "A typed iOS SF Symbol view for Expo and React Native.",
