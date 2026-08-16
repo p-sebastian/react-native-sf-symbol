@@ -1,6 +1,6 @@
 // Copyright (c) 2026 Sebastian Peñafiel (@p-sebastian)
 // SPDX-License-Identifier: MIT
-import {SFSymbol} from 'react-native-sf-symbol'
+import {SFSymbol} from '@p-sebastian/react-native-sf-symbol'
 
 export const ReadmeSavedSymbol = () => <SFSymbol accessibilityLabel="Saved" name="bookmark.fill" size={24} />
 

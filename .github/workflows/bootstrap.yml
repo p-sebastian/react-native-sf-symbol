@@ -40,9 +40,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          test "$(node -p "require('./package.json').name")" = 'react-native-sf-symbol'
+          test "$(node -p "require('./package.json').name")" = '@p-sebastian/react-native-sf-symbol'
           test "$(node -p "require('./package.json').version")" = '0.1.0'
-          test -z "$(npm view react-native-sf-symbol version 2>/dev/null || true)"
+          test -z "$(npm view @p-sebastian/react-native-sf-symbol version 2>/dev/null || true)"
           gh api -H 'Accept: application/vnd.github+json' "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/check-runs" \
             --jq '.check_runs[] | select(.name == "required" and .conclusion == "success")' | grep -q .
           gh api "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/status" \

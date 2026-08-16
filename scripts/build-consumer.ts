@@ -80,7 +80,7 @@ try {
   }
   const packagePath = join(appDirectory, 'package.json')
   const packageJson = parseExamplePackage(readFileSync(packagePath, 'utf8'))
-  packageJson.dependencies['react-native-sf-symbol'] = dependency
+  packageJson.dependencies['@p-sebastian/react-native-sf-symbol'] = dependency
   writeFileSync(packagePath, `${JSON.stringify(packageJson, null, 2)}\n`)
 
   run(['bun', 'install'], appDirectory)

@@ -1,4 +1,4 @@
-# react-native-sf-symbol
+# @p-sebastian/react-native-sf-symbol
 
 A typed, iOS-only SF Symbol view for Expo and React Native New Architecture applications.
 
@@ -14,7 +14,7 @@ Android, cross-platform fallbacks, and direct access to the native view are outs
 ## Install
 
 ```bash
-bun expo install react-native-sf-symbol
+bun expo install @p-sebastian/react-native-sf-symbol
 ```
 
 If the application does not already use development-client tooling:
@@ -38,7 +38,7 @@ bunx eas-cli@latest build --platform ios --profile development
 ## Basic use
 
 ```tsx
-import {SFSymbol} from 'react-native-sf-symbol'
+import {SFSymbol} from '@p-sebastian/react-native-sf-symbol'
 
 export function SavedSymbol() {
   return <SFSymbol accessibilityLabel="Saved" name="bookmark.fill" size={24} />

@@ -57,13 +57,13 @@ jobs:
         run: |
           TAG_SHA=$(gh api "repos/${GITHUB_REPOSITORY}/git/ref/tags/v${VERSION}" --jq .object.sha 2>/dev/null || true)
           test -z "$TAG_SHA" || test "$TAG_SHA" = "$GITHUB_SHA"
-          PUBLISHED=$(npm view "react-native-sf-symbol@${VERSION}" version 2>/dev/null || true)
+          PUBLISHED=$(npm view "@p-sebastian/react-native-sf-symbol@${VERSION}" version 2>/dev/null || true)
           test -z "$PUBLISHED" || test "$PUBLISHED" = "$VERSION"
           if test -n "$PUBLISHED"; then
             test -n "$TAG_SHA"
             echo 'already-published=true' >> "$GITHUB_OUTPUT"
           else
-            LATEST=$(npm view react-native-sf-symbol version)
+            LATEST=$(npm view @p-sebastian/react-native-sf-symbol version)
             node -e 'const [a,b]=process.argv.slice(1).map(v=>v.split(".").map(Number)); if (!(a[0]>b[0] || a[0]===b[0]&&a[1]>b[1] || a[0]===b[0]&&a[1]===b[1]&&a[2]>b[2])) process.exit(1)' "$VERSION" "$LATEST"
             echo 'already-published=false' >> "$GITHUB_OUTPUT"
           fi
@@ -166,16 +166,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ needs.preflight.outputs.version }}
         run: |
-          test "$(npm view "react-native-sf-symbol@${VERSION}" version)" = "$VERSION"
-          test "$(npm view "react-native-sf-symbol@${VERSION}" repository.url)" = 'git+https://github.com/p-sebastian/react-native-sf-symbol.git'
-          test -n "$(npm view "react-native-sf-symbol@${VERSION}" dist.integrity)"
-          test -n "$(npm view "react-native-sf-symbol@${VERSION}" dist.attestations.url)"
+          test "$(npm view "@p-sebastian/react-native-sf-symbol@${VERSION}" version)" = "$VERSION"
+          test "$(npm view "@p-sebastian/react-native-sf-symbol@${VERSION}" repository.url)" = 'git+https://github.com/p-sebastian/react-native-sf-symbol.git'
+          test -n "$(npm view "@p-sebastian/react-native-sf-symbol@${VERSION}" dist.integrity)"
+          test -n "$(npm view "@p-sebastian/react-native-sf-symbol@${VERSION}" dist.attestations.url)"
           gh release view "v${VERSION}" >/dev/null 2>&1 || gh release create "v${VERSION}" --generate-notes --verify-tag
           {
-            echo "## react-native-sf-symbol ${VERSION}"
+            echo "## @p-sebastian/react-native-sf-symbol ${VERSION}"
             echo "- Source: ${GITHUB_SHA}"
             echo "- Tag: v${VERSION}"
-            echo "- npm: https://www.npmjs.com/package/react-native-sf-symbol/v/${VERSION}"
+            echo "- npm: https://www.npmjs.com/package/@p-sebastian/react-native-sf-symbol/v/${VERSION}"
             echo "- Release: https://github.com/${GITHUB_REPOSITORY}/releases/tag/v${VERSION}"
             echo "- Run: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
           } >> "$GITHUB_STEP_SUMMARY"
